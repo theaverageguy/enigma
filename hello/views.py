@@ -19,10 +19,10 @@ def db(request):
     return render(request, 'db.html', {'greetings': greetings})
 
 
-def hello_monkey():
+def hello_monkey(request):
     """Respond to incoming calls with a simple text message."""
 
     resp = twilio.twiml.Response()
     resp.message("Hello, Mobile Monkey")
-    return str(resp)
+    return render(request, 'monkey.html', {'greetings': str(resp)})
 
