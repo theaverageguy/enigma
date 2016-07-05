@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+import twilio.twiml
 from .models import Greeting
 
 # Create your views here.
@@ -17,4 +17,12 @@ def db(request):
     greetings = Greeting.objects.all()
 
     return render(request, 'db.html', {'greetings': greetings})
+
+
+ def hello_monkey():
+    """Respond to incoming calls with a simple text message."""
+
+    resp = twilio.twiml.Response()
+    resp.message("Hello, Mobile Monkey")
+    return str(resp)
 
